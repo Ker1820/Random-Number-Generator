@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Label fx:id="lower_bound" layoutX="54.0" layoutY="50.0" text="Enter lower bound:" AnchorPane.leftAnchor="54.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="upper_bound" layoutX="54.0" layoutY="80.0" text="Enter upper bound:" AnchorPane.leftAnchor="54.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="count_of_number" layoutX="54.0" layoutY="110.0" text="Enter count of random number:" AnchorPane.leftAnchor="54.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="enter_lower_bound" layoutX="347.0" layoutY="53.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="63.0" />
+      <TextField fx:id="enter_upper_bound" layoutX="347.0" layoutY="83.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="63.0" />
+      <TextField fx:id="enter_cound_of_number" layoutX="347.0" layoutY="113.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="63.0" />
+      <TextArea fx:id="text_area" editable="false" layoutX="54.0" layoutY="144.0" prefHeight="200.0" prefWidth="443.0" scaleShape="false" scrollLeft="12.0" AnchorPane.bottomAnchor="142.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="146.0" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="generate" layoutX="54.0" layoutY="381.0" mnemonicParsing="false" text="Generate" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="54.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="delete" layoutX="387.0" layoutY="381.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Delete" AnchorPane.bottomAnchor="63.0" AnchorPane.rightAnchor="63.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
