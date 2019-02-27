@@ -13,6 +13,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("RandomGenerator");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setMinHeight(488);
+        primaryStage.setMinWidth(559);
         primaryStage.show();
     }
 

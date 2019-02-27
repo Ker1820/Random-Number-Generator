@@ -63,6 +63,10 @@ public class Controller {
         static final String LOWER_IS_NOT_INTEGER = "Lower bound must contains only integers! Please, enter correct data!";
         static final String UPPER_IS_NOT_INTEGER = "Upper bound must contains only integers! Please, enter correct data!";
         static final String COUNT_OF_NUMBER_IS_NOT_INTEGER = "Count of number must contains only integers! Please, enter correct data!";
+        static final String MAX_VALUE = "Length of number must equals or be less than 9!";
+        static final String LOWER_EQUALS_UPPER = "Lower bound can't equals to upper bound";
+
+
     }
 
     /*Головний метод у якому знаходиться уся логіка*/
@@ -75,7 +79,7 @@ public class Controller {
             if (check) {
 //                Цикл для виводу заданої кількості рандомних чисел
                 for (Integer i = 0; i < count_of_number_int; i++) {
-                    result.append("" + (int) (Math.random() * (upper_bound_int - lower_bound_int) + lower_bound_int) + " ");
+                    result.append("" + (int) (Math.random() * (upper_bound_int - lower_bound_int + 1) + lower_bound_int) + " ");
                 }
                 text_area.setText(result.toString());
             } else {
@@ -97,45 +101,77 @@ public class Controller {
     //    Метод, який перевіряє коректність введених даних
 //    Якщо дані не підоходять, то до рядка з попередженнями додаються ті чи інші попередження
     private boolean check_input() {
+        boolean lenght_flag = true;
         boolean flag = true;
-//        Перевірка нижньої межі чи містить вона щось та чи правильно введені дані
+        //Перевірка нижньої межі чи містить вона щось та чи правильно введені дані
+
         try {
+//            Перевірка на довжину числа
+            if (enter_lower_bound.getText().trim().length() >= 10) {
+                warning_string.append(Warnings.MAX_VALUE + "\n");
+                flag = false;
+                lenght_flag = false;
+            }
             if (enter_lower_bound.getText().trim().isEmpty()) {
                 warning_string.append(Warnings.LOWER_BOUND + "\n");
                 flag = false;
-            } else
+            } else {
                 lower_bound_int = Integer.parseInt(enter_lower_bound.getText().trim());
+            }
         } catch (NumberFormatException e) {
-            warning_string.append(Warnings.LOWER_IS_NOT_INTEGER + "\n");
+            if (lenght_flag)
+                warning_string.append(Warnings.LOWER_IS_NOT_INTEGER + "\n");
             flag = false;
         }
+        lenght_flag = true;
 //        Перевірка верхньої межі чи містить вона щось та чи правильно введені дані
         try {
+//            Перевірка на довжину числа
+            if (enter_upper_bound.getText().trim().length() >= 10) {
+                warning_string.append(Warnings.MAX_VALUE + "\n");
+                flag = false;
+                lenght_flag = false;
+            }
             if (enter_upper_bound.getText().trim().isEmpty()) {
                 warning_string.append(Warnings.UPPER_BOUND + "\n");
                 flag = false;
-            } else
+            } else {
                 upper_bound_int = Integer.parseInt(enter_upper_bound.getText().trim());
+            }
         } catch (NumberFormatException e) {
-            warning_string.append(Warnings.UPPER_IS_NOT_INTEGER + "\n");
+            if (lenght_flag)
+                warning_string.append(Warnings.UPPER_IS_NOT_INTEGER + "\n");
             flag = false;
         }
+        lenght_flag = true;
 //        Перевірка кількості рандомних чисел межі чи містить вона щось та чи правильно введені дані
         try {
+//            Перевірка на довжину числа
+            if (enter_cound_of_number.getText().trim().length() >= 10) {
+                warning_string.append(Warnings.MAX_VALUE + "\n");
+                flag = false;
+                lenght_flag = false;
+            }
             if (enter_cound_of_number.getText().trim().isEmpty()) {
                 warning_string.append(Warnings.COUNT_OF_NUMBER + "\n");
                 flag = false;
-            } else
+            } else {
                 count_of_number_int = Integer.parseInt(enter_cound_of_number.getText().trim());
+            }
         } catch (NumberFormatException e) {
-            warning_string.append(Warnings.COUNT_OF_NUMBER_IS_NOT_INTEGER + "\n");
+            if (lenght_flag)
+                warning_string.append(Warnings.COUNT_OF_NUMBER_IS_NOT_INTEGER + "\n");
             flag = false;
         }
 //        Перевірка на те, що нижня межа менша за верхю
         try {
             if (lower_bound_int != null && upper_bound_int != null && lower_bound_int > upper_bound_int) {
                 logger.info("" + lower_bound_int);
-                warning_string.append(Warnings.LOWER_LESS_UPPER);
+                warning_string.append(Warnings.LOWER_LESS_UPPER + "\n");
+                flag = false;
+            }
+            if (lower_bound_int != null && upper_bound_int != null && lower_bound_int.equals(upper_bound_int)) {
+                warning_string.append(Warnings.LOWER_EQUALS_UPPER + "\n");
                 flag = false;
             }
         } catch (NumberFormatException e) {
@@ -174,5 +210,6 @@ public class Controller {
         error_stage.setScene(scene);
         error_stage.show();
     }
+
 }
 
